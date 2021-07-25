@@ -1,0 +1,19 @@
+<article [class.content-mob]="deviceXs" [class.content]="!deviceXs" fxLayout="column" fxLayoutAlign="start center">
+  <h1 style="text-align: center; margin-top: 10px">Herzlich Willkommen!</h1>
+  <mat-card *ngFor="let p of preise" class="example-card">
+    <div fxLayout="column" fxLayoutAlign="start center">
+      <h3>{{p.tankstelle.name}}</h3>
+      <div fxLayout="row" fxLayoutAlign="space-evenly center">
+        <h2 style="margin-right: 100px">{{p.benzin}}</h2>
+        <h2>{{p.diesel}}</h2>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="space-evenly center">
+        <h3 style="margin-right: 100px">Benzin</h3>
+        <h3>Diesel</h3>
+      </div>
+      <div>
+        <p>Zuletzt aktualisiert: {{p.time[3]}}:{{p.time[4]}} Uhr</p>
+      </div>
+    </div>
+  </mat-card>
+</article>
