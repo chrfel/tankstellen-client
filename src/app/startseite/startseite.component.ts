@@ -5,6 +5,7 @@ import {Tankstelle} from '../shared/model/tankstelle';
 import {Preise} from '../shared/model/preise';
 import {TankstelleService} from '../shared/service/tankstelle.service';
 import {PreiseService} from '../shared/service/preise.service';
+import {NgxSpinnerService} from "ngx-spinner";
 
 @Component({
   selector: 'app-startseite',
@@ -20,10 +21,11 @@ export class StartseiteComponent implements OnInit {
   preise: Preise[] = [];
 
   constructor(public mediaObserver: MediaObserver, private tankstellenService: TankstelleService,
-              private preiseService: PreiseService) {
+              private preiseService: PreiseService, private spinner: NgxSpinnerService) {
   }
 
   ngOnInit(): void {
+    this.spinner.show();
     this.mediaSub = this.mediaObserver.media$.subscribe((result: MediaChange) => {
       this.deviceXs = result.mqAlias === 'xs' ? true : false;
     });
@@ -36,6 +38,7 @@ export class StartseiteComponent implements OnInit {
             (value2: any) => {
               this.preise.push(value2);
               this.preise.sort((a, b) => (a.tankstelle.name > b.tankstelle.name ? -1 : 1));
+              this.spinner.hide();
             }
           );
         });

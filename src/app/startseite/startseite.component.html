@@ -1,3 +1,5 @@
+<ngx-spinner [fullScreen]="true" bdColor="rgba(0, 0, 0, 0.8)" color="#fff" size="medium" type="ball-8bits"><p
+  style="color: white"> Preise werden geladen... </p></ngx-spinner>
 <article [class.content-mob]="deviceXs" [class.content]="!deviceXs" fxLayout="column" fxLayoutAlign="start center">
   <h1 style="text-align: center; margin-top: 10px">Herzlich Willkommen!</h1>
   <mat-card *ngFor="let p of preise" class="example-card">
@@ -12,7 +14,8 @@
         <h3>Diesel</h3>
       </div>
       <div>
-        <p>Zuletzt aktualisiert: {{p.time[3]}}:{{p.time[4]}} Uhr</p>
+        <p *ngIf="p.time[4] != '0'">Zuletzt aktualisiert: {{p.time[3]}}:{{p.time[4]}} Uhr</p>
+        <p *ngIf="p.time[4] == '0'">Zuletzt aktualisiert: {{p.time[3]}}:00 Uhr</p>
       </div>
     </div>
   </mat-card>

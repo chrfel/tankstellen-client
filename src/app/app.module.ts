@@ -14,6 +14,7 @@ import {MatCardModule} from "@angular/material/card";
 import {FlexModule} from "@angular/flex-layout";
 import {StartseiteComponent} from './startseite/startseite.component';
 import {HeaderComponent} from './header/header.component';
+import {NgxSpinnerModule} from "ngx-spinner";
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import {HeaderComponent} from './header/header.component';
     MatButtonModule,
     MatCardModule,
     FlexModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
